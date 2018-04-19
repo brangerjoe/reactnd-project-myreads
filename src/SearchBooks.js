@@ -67,13 +67,12 @@ class SearchBooks extends React.Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {console.log(this.state.results)}
                         <Bookshelf
                             name='results'
                             displayName='Results'
                             books={this.state.results.map(result => {
                                 let book = this.props.books.find(book => book.id === result.id)
-                                result.shelf = book !== undefined ? book.shelf : ''
+                                result.shelf = book !== undefined ? book.shelf : 'none'
                                 return result;
                             })}
                             onMoveBook={this.props.onMoveBook}

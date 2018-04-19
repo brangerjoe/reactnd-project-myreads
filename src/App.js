@@ -22,10 +22,12 @@ class BooksApp extends React.Component {
 	moveBook(book, shelf) {
 		BooksAPI.update(book, shelf)
 			.then(this.setState(prevState => {
-				let bookToUpdate = prevState.books.find(b => (b.id === book.id))
-				//console.log(`Moving ${bookToUpdate.title} (${bookToUpdate.shelf} -> ${shelf})`)
-				bookToUpdate.shelf = shelf;
-				return prevState;
+				book.shelf = shelf			
+				let newBooks = prevState.books.filter(b => (b.id !== book.id))
+				newBooks.push(book)
+				return {
+					books: newBooks
+				}
 			}));
 	}
 
