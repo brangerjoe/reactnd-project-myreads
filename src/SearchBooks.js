@@ -24,7 +24,6 @@ class SearchBooks extends React.Component {
         else {
             BooksAPI.search(query)
                 .then(results => {
-                    console.log(query, results)
                     if (results.error === "empty query") {
                         this.setState({
                             results: []
@@ -72,7 +71,11 @@ class SearchBooks extends React.Component {
                         <Bookshelf
                             name='results'
                             displayName='Results'
-                            books={this.state.results}
+                            books={this.state.results.map(result => {
+                                let book = this.props.books.find(book => book.id === result.id)
+                                result.shelf = book !== undefined ? book.shelf : ''
+                                return result;
+                            })}
                             onMoveBook={this.props.onMoveBook}
                             ShowAll='true'
                         />

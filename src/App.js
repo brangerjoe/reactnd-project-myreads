@@ -23,7 +23,7 @@ class BooksApp extends React.Component {
 		BooksAPI.update(book, shelf)
 			.then(this.setState(prevState => {
 				let bookToUpdate = prevState.books.find(b => (b.id === book.id))
-				console.log(`Moving ${bookToUpdate.title} (${bookToUpdate.shelf} -> ${shelf})`)
+				//console.log(`Moving ${bookToUpdate.title} (${bookToUpdate.shelf} -> ${shelf})`)
 				bookToUpdate.shelf = shelf;
 				return prevState;
 			}));
@@ -48,7 +48,7 @@ class BooksApp extends React.Component {
 				<Route exact path='/search' render={() => (
 					<div>
 						<SearchBooks 
-							books={this.state.books} 
+							books={this.state.books}
 							onMoveBook={(book, shelf) => this.moveBook(book, shelf)}
 						/>
 						</div>
