@@ -2,8 +2,8 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import ListBooks from './ListBooks';
-import SearchBooks from './SearchBooks';
+import ListBooks from './ListBooks'
+import SearchBooks from './SearchBooks'
 
 class BooksApp extends React.Component {
 	state = {
@@ -28,7 +28,7 @@ class BooksApp extends React.Component {
 				return {
 					books: newBooks
 				}
-			}));
+			}))
 	}
 
 	render() {
